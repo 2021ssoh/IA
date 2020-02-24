@@ -1,0 +1,50 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="/../static/style.css">
+    </head>
+    <style>
+    body {
+  background-color: lightblue;
+}
+    </style>
+    <body>
+      <center><h1>Milo's Treats</h1></center>
+      <div class="event-list">
+      <div class = "b" >
+        <a href="/homepage">
+          <img src="https://image.flaticon.com/icons/svg/61/61689.svg" alt="home button"
+          style="width:70px;height:70px;border:0">
+        <a href="/cart">
+          <img src="https://image.flaticon.com/icons/png/512/34/34627.png" alt="shopping cart"
+          style="width:70px;height:70px;border:0">
+        </a>
+        <br>
+        <a href="/homepage">Home Page</a>
+        <a href="/cart">Shopping <br> Cart</a>
+      </div>
+      <div>
+      <ul>
+        {% for event in events %}
+          <li>{{ event.name }} - {{ event.price }} : {{ event.ingredients }}, {{ event.calorie }}</li>
+        {% endfor %}
+      </ul>
+    <form method = "post" action = "/secret">
+    <p>What is the product name?</p>
+    <input type = "text" name = "name"/>
+    <br>
+    <p>What is price?</p>
+    <input type = "text" name = "price"/>
+
+    <p>What ingredients are in the product?</p>
+    <input type = "text" name = "ingredients" <br>
+
+    <p>Calorie content</p>
+    <input type = "text" name = "calorie"
+    <br><br>
+    <input type="submit" value="Submit">
+
+    </form>
+
+      </div>
+    </body>
+</html>
