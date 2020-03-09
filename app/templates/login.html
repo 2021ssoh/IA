@@ -1,0 +1,44 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="/../static/style.css">
+    </head>
+    <style>
+    body {
+  background-color: lightblue;
+}
+    </style>
+    <body>
+      <center><h1>Milo's Treats</h1></center>
+      <div class="event-list">
+      <div class = "b" >
+        <a href="/homepage">
+          <img src="https://image.flaticon.com/icons/svg/61/61689.svg" alt="home button"
+          style="width:70px;height:70px;border:0">
+        <a href="/cart">
+          <img src="https://image.flaticon.com/icons/png/512/34/34627.png" alt="shopping cart"
+          style="width:70px;height:70px;border:0">
+        </a>
+        <br>
+        <a href="/homepage">Home Page</a>
+        <a href="/cart">Shopping <br> Cart</a>
+      </div>
+      <div>
+        <!-- <ul>
+          {% for event in events %}
+            <li>{{ event.name }} - {{ event.age}} : {{ event.problem }}, {{ event.hw }}, {{ event.breed }}, {{ event.email }}</li>
+          {% endfor %}
+        </ul> -->
+        <form method = "post" action = "/login">
+          <p>What is your name?</p>
+          <input type = "text" name = "name"/>
+          <br>
+          <input type = "text" name = "password"/>
+
+          <input type="submit" value="Log In">
+
+          <br>
+        </form>
+        <p>No account? <a href = "/signup">Sign Up.</a></p>
+      </div>
+    </body>
+</html>

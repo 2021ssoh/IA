@@ -26,6 +26,7 @@
         <a href="/homepage">
           <img src="https://image.flaticon.com/icons/svg/61/61689.svg" alt="home button"
           style="width:70px;height:70px;border:0">
+        </a>
         <a href="/shoppingcart">
           <img src="https://image.flaticon.com/icons/png/512/34/34627.png" alt="shopping cart"
           style="width:70px;height:70px;border:0">
@@ -34,24 +35,24 @@
         <a href="/homepage">Home Page</a>
         <a href="/shoppingcart">Shopping <br> Cart</a>
       </div>
-      <div>
+    </div>
+      {% for event in events %}
         <div class="grid-container">
-        <div class="grid-item"><img src={{ events[0].image }}
+        <div class="grid-item"><img src="{{ event[0].image }}"
         alt="PC birthday" height="275" width="275"></div>
-        <div class="grid-item"><form method = "post", action = "/shoppingcart">
+        <div class="grid-item">
           <ul>
-            {% for event in events %}
-              <input type = "radio" name = "product" value = {{ event._id}}>
-            {{ event.event_name }} <br> Price: {{ event.event_price }} <br> Ingredients: {{ event.ingredients }} <br> Calories: {{ event.calorie }}
-          </input>
-             {% endfor %}
-             <br>
-             <input type="submit" value="Add to shopping cart"></input>
-          </ul></div>
-        </form>
-
-
+            {{ event[0].event_name }} <br> Price: {{ event[0].event_price }} <br> Ingredients: {{ event[0].ingredients }} <br> Calories: {{ event[0].calorie }}
+          </ul>
+        </div>
       </div>
+      {% endfor %}
+
+      <center><a href="/buy">Buy</a></center>
+
+      <!-- ask if i can submit a form without having any radio buttons but use the info that was stored in the shooping cart before -->
+
+
 
     </body>
 </html>

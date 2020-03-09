@@ -9,6 +9,18 @@
     p {
 font-size: 25px;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* background-color: #2196F3; */
+  padding: 10px;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
     </style>
     <body>
       <center><h1>Milo's Treats</h1></center>
@@ -17,40 +29,56 @@ font-size: 25px;
         <a href="/homepage">
           <img src="https://image.flaticon.com/icons/svg/61/61689.svg" alt="home button"
           style="width:70px;height:70px;border:0">
-        <a href="/cart">
+        <a href="/shopping cart">
           <img src="https://image.flaticon.com/icons/png/512/34/34627.png" alt="shopping cart"
           style="width:70px;height:70px;border:0">
         </a>
         <br>
         <a href="/homepage">Home Page</a>
-        <a href="/cart">Shopping <br> Cart</a>
+        <a href="/shoppingcart">Shopping <br> Cart</a>
       </div>
       <div>
-        <a href="/info">
-          <img src="https://img.chewy.com/is/image/catalog/144969_MAIN._SY630_V1551971519_.jpg" alt="PC birthday"
-          style="width:200px;height:200px;border:0">
-        </a>
-        <p> Pooch creamery <br> Birthday Cake </p>
-        <a href="/info">
-          <img src="https://img.chewy.com/is/image/catalog/144965_MAIN._AC_SL400_V1551971519_.jpg" alt="PC birthday"
-          style="width:200px;height:200px;border:0">
-        </a>
-        <p> Pooch creamery <br> Peanut Butter </p>
-        <a href="/info">
-          <img src="https://s7d2.scene7.com/is/image/PetSmart/5266488?$pdp-placeholder-desktop$" alt="PC birthday"
-          style="width:200px;height:200px;border:0">
-        </a>
-        <p> The Lazy Dog <br> Birthday Cake Bites </p>
-        <a href="/info">
-          <img src="https://s7d2.scene7.com/is/image/PetSmart/5280571?$pdp-placeholder-desktop$" alt="PC birthday"
-          style="width:200px;height:200px;border:0">
-        </a>
-        <p> The Lazy Dog <br> Blueberry and Peanut Butter </p>
-        <a href="/info">
-          <img src="https://img.chewy.com/is/image/catalog/120641_MAIN._AC_SL1500_V1493232281_.jpg" alt="PC birthday"
-          style="width:200px;height:200px;border:0">
-        </a>
-        <p> The Lazy Dog <br> The orginial Pup-Pie </p>
+        <form action="/filter" method = "post">
+        <div class="grid-container">
+          <div class="grid-item"><input type="radio" name="product" value= "5e44184472c84374ebb8751d">
+          <label for= "5e44184472c84374ebb8751d"><a href="/info">
+            <img src="https://img.chewy.com/is/image/catalog/144969_MAIN._SY630_V1551971519_.jpg" alt="PC birthday"
+            style="width:200px;height:200px;border:0">
+          </a>
+          <p> Pooch creamery <br> Birthday Cake </p></label><br></div>
+
+          <div class="grid-item"><input type="radio" name="product" value= "5e4418b872c84374ebb8751e">
+          <label for="5e4418b872c84374ebb8751e"><a href="/info">
+            <img src="https://img.chewy.com/is/image/catalog/144965_MAIN._AC_SL400_V1551971519_.jpg" alt="PC birthday"
+            style="width:200px;height:200px;border:0">
+          </a>
+         <p> Pooch creamery <br> Peanut Butter </p></label><br></div>
+
+          <div class="grid-item"><input type="radio" name="product" value="5e441a2f72c84374ebb87521">
+          <label for="5e441a2f72c84374ebb87521"><a href="/info">
+            <img src="https://s7d2.scene7.com/is/image/PetSmart/5266488?$pdp-placeholder-desktop$" alt="PC birthday"
+            style="width:200px;height:200px;border:0">
+          </a>
+          <p> The Lazy Dog <br> Birthday Cake Bites </p></label><br></div>
+
+          <div class="grid-item">  <input type="radio" name="product" value="5e44194b72c84374ebb8751f">
+            <label for="5e44194b72c84374ebb8751f"><a href="/info">
+              <img src="https://s7d2.scene7.com/is/image/PetSmart/5280571?$pdp-placeholder-desktop$" alt="PC birthday"
+              style="width:200px;height:200px;border:0">
+            </a>
+            <p> The Lazy Dog <br> Blueberry and Peanut Butter </p></label><br></div>
+
+          <div class="grid-item">  <input type="radio" name="product" value="5e44199872c84374ebb87520">
+            <label for="5e44199872c84374ebb87520">  <a href="/info">
+                <img src="https://img.chewy.com/is/image/catalog/120641_MAIN._AC_SL1500_V1493232281_.jpg" alt="PC birthday"
+                style="width:200px;height:200px;border:0">
+              </a>
+              <p> The Lazy Dog <br> The orginial Pup-Pie </p></label><br></div>
+              <br>
+              <br>
+
+              <input type="submit" value="Interested?">
+
 
 
       </div>
