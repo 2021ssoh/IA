@@ -35,49 +35,24 @@ font-size: 25px;
         </a>
         <br>
         <a href="/homepage">Home Page</a>
-        <a href="/shoppingcart">Shopping <br> Cart</a>
+        <a href="/shoppingcart2">Shopping <br> Cart</a>
       </div>
       <div>
         <form action="/filter" method = "post">
         <div class="grid-container">
-          <div class="grid-item"><input type="radio" name="product" value= "5e44184472c84374ebb8751d">
-          <label for= "5e44184472c84374ebb8751d"><a href="/info">
-            <img src="https://img.chewy.com/is/image/catalog/144969_MAIN._SY630_V1551971519_.jpg" alt="PC birthday"
+          <!-- extensibility, makes code less hard for future uses -->
+          <!-- at first I hardcoded all the info but by changing it from hardcode to event.(name in mongo) it's easier -->
+        {% for event in events %}
+          <div class="grid-item"><input type="radio" name="product" value= {{ event._id }}>
+          <label for= {{ event._id }}><a href="/info">
+            <img src= {{ event.image }} alt="PC birthday"
             style="width:200px;height:200px;border:0">
           </a>
-          <p> Pooch creamery <br> Birthday Cake </p></label><br></div>
-
-          <div class="grid-item"><input type="radio" name="product" value= "5e4418b872c84374ebb8751e">
-          <label for="5e4418b872c84374ebb8751e"><a href="/info">
-            <img src="https://img.chewy.com/is/image/catalog/144965_MAIN._AC_SL400_V1551971519_.jpg" alt="PC birthday"
-            style="width:200px;height:200px;border:0">
-          </a>
-         <p> Pooch creamery <br> Peanut Butter </p></label><br></div>
-
-          <div class="grid-item"><input type="radio" name="product" value="5e441a2f72c84374ebb87521">
-          <label for="5e441a2f72c84374ebb87521"><a href="/info">
-            <img src="https://s7d2.scene7.com/is/image/PetSmart/5266488?$pdp-placeholder-desktop$" alt="PC birthday"
-            style="width:200px;height:200px;border:0">
-          </a>
-          <p> The Lazy Dog <br> Birthday Cake Bites </p></label><br></div>
-
-          <div class="grid-item">  <input type="radio" name="product" value="5e44194b72c84374ebb8751f">
-            <label for="5e44194b72c84374ebb8751f"><a href="/info">
-              <img src="https://s7d2.scene7.com/is/image/PetSmart/5280571?$pdp-placeholder-desktop$" alt="PC birthday"
-              style="width:200px;height:200px;border:0">
-            </a>
-            <p> The Lazy Dog <br> Blueberry and Peanut Butter </p></label><br></div>
-
-          <div class="grid-item">  <input type="radio" name="product" value="5e44199872c84374ebb87520">
-            <label for="5e44199872c84374ebb87520">  <a href="/info">
-                <img src="https://img.chewy.com/is/image/catalog/120641_MAIN._AC_SL1500_V1493232281_.jpg" alt="PC birthday"
-                style="width:200px;height:200px;border:0">
-              </a>
-              <p> The Lazy Dog <br> The orginial Pup-Pie </p></label><br></div>
-              <br>
-              <br>
-
-              <input type="submit" value="Interested?">
+          <p> {{ event.event_name }}</p></label><br></div>
+          {% endfor %}
+          <br>
+          <br>
+          <input type="submit" value="Interested?">
 
 
 

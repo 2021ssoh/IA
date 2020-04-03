@@ -54,7 +54,9 @@ def homepage():
 
 @app.route('/cart')
 def cart():
-    return render_template('cart.html')
+    collection = mongo.db.events
+    events = collection.find({})
+    return render_template('cart.html', events = events)
 
 @app.route('/input_event')
 def input_event():
@@ -137,13 +139,13 @@ def logout():
     session.clear()
     return render_template('index.html')
 
-# a route to show whatever was stored previously under someone's account history
-@app.route('/myshoppingcart')
-def name():
-    collection = mongo.db.information
-    name = session['name']
-    events = collection.find({"name": name})
-    return render_template('shoppingcart.html', events = events)
+# # a route to show whatever was stored previously under someone's account history
+# @app.route('/myshoppingcart')
+# def name():
+#     collection = mongo.db.information
+#     name = session['name']
+#     events = collection.find({"name": name})
+#     return render_template('shoppingcart.html', events = events)
 
 
 
@@ -151,14 +153,16 @@ def name():
 def filter():
     food_info = dict(request.form)
     _id = food_info["product"]
-    print(food_info)
+    print("This is the ", food_info)
+    print("this is the id", _id)
     collection = mongo.db.events
     # event_name = food_info["event_name"]
     # event_price = food_info["event_price"]
     # ingredients = food_info["ingredients"]
     # calorie = food_info["calorie"]
+    # query
     product_info = list(collection.find({"_id": ObjectId(_id)}))
-    print (product_info)
+    print ("This is the product info", product_info)
     return render_template('info.html', events = product_info)
 
 @app.route('/shoppingcart', methods = ["get", "post"])
@@ -173,25 +177,62 @@ def shoppingcart():
         try:
             cart.insert({'name': session['name'], "_id": _id})
         except:
-            print("That's already in the shopping cart")
+            print ("That's already in your shopping cart")
         collection = mongo.db.events
         product_info = list(collection.find({"_id": ObjectId(_id)}))
-        # collection.insert({"id": ObjectId(_id)})
-        # events = list(collection.find({}))
         return render_template('shoppingcart.html', events = product_info)
     else:
         # query
         cart = mongo.db.carts
         shopping_cart = cart.find({"name": session['name']})
         results = []
+        # this ^^ makes a dictionary inside a list inside a list
+        # but when I remove the [0] on shoppingcar.html aft event it wont display when i click add to shooping cart and also wont display when i click on shopping cart 'link'
         events = mongo.db.events
         for item in shopping_cart:
-            print(item)
+            print("This is the item", item)
             results.append(list(events.find({"_id": ObjectId(item["_id"])})))
-            print(results)
+            print("This is the result", results)
         return render_template('shoppingcart.html', events = results)
 
-@app.route('/buy')
-def buy():
-    username = cart.find({"name": session['name']})
-    print(username)
+@app.route('/shoppingcart2')
+def shoppingcart2():
+    if request.method == "POST":
+        food_info = dict(request.form)
+        print("the info from the form is", food_info)
+        _id = food_info["product"]
+        # connect to cart collection
+        cart = mongo.db.carts
+        # insert username and product ID to cart collection
+        try:
+            cart.insert({'name': session['name'], "_id": _id})
+        except:
+            print ("That's already in your shopping cart")
+        collection = mongo.db.events
+        product_info = list(collection.find({"_id": ObjectId(_id)}))
+        return render_template('shoppingcart.html', events = product_info)
+    else:
+        cart = mongo.db.carts
+        shopping_cart = cart.find({"name": session['name']})
+        results = []
+    # this ^^ makes a dictionary inside a list inside a list
+    # but when I remove the [0] on shoppingcart.html aft event it wont display when i click add to shooping cart and also wont display when i click on shopping cart 'link'
+        events = mongo.db.events
+        for item in shopping_cart:
+            print("This is the item", item)
+            results.append(list(events.find({"_id": ObjectId(item["_id"])})))
+            print("This is the result", results)
+    return render_template('shoppingcart2.html', events = results)
+
+# @app.route('/buy')
+# def buy():
+#     username = cart.find({"name": session['name']})
+#     print(username)
+
+@app.route('/delete_event')
+def delete_event():
+    event = dict(request.form)
+    collection = mongo.db.carts
+    collection.delete_one({})
+    return redirect('/shoppingcart2')
+# make a route that allows the user to delete things off their shopping cart

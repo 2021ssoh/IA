@@ -41,17 +41,18 @@
     </div>
       {% for event in events %}
         <div class="grid-container">
-        <div class="grid-item"><img src="{{ event.image }}"
+        <div class="grid-item"><img src="{{ event[0].image }}"
         alt="PC birthday" height="275" width="275"></div>
         <div class="grid-item">
           <ul>
-            {{ event.event_name }} <br> Price: {{ event.event_price }} <br> Ingredients: {{ event.ingredients }} <br> Calories: {{ event.calorie }}
+              <input type = "radio" name = "product" value = {{ event._id }}>
+            {{ event[0].event_name }} <br> Price: {{ event[0].event_price }} <br> Ingredients: {{ event[0].ingredients }} <br> Calories: {{ event[0].calorie }}
           </ul>
         </div>
       </div>
       {% endfor %}
 
-    
+      <center><a href="/buy">Buy</a> / <a href="/delete_event">Delete</a></center>
 
       <!-- ask if i can submit a form without having any radio buttons but use the info that was stored in the shooping cart before -->
 

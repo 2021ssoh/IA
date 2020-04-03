@@ -32,22 +32,24 @@
         </a>
         <br>
         <a href="/homepage">Home Page</a>
-        <a href="/shoppingcart">Shopping <br> Cart</a>
+        <a href="/shoppingcart2">Shopping <br> Cart</a>
       </div>
       <div>
         <div class="grid-container">
-        <div class="grid-item"><img src={{ events[0].image }}
+          {% for event in events %}
+        <div class="grid-item"><img src={{ event.image }}
         alt="PC birthday" height="275" width="275"></div>
         <div class="grid-item"><form method = "post", action = "/shoppingcart">
           <ul>
-            {% for event in events %}
-              <input type = "radio" name = "product" value = {{ event._id}}>
+              <input type = "radio" name = "product" value = {{ event._id }}>
             {{ event.event_name }} <br> Price: {{ event.event_price }} <br> Ingredients: {{ event.ingredients }} <br> Calories: {{ event.calorie }}
           </input>
              {% endfor %}
              <br>
              <input type="submit" value="Add to shopping cart"></input>
           </ul></div>
+          <br>
+          *Please click on the small button on the left side of the name of the product before clicking the "add to shopping cart" button
         </form>
 
 
